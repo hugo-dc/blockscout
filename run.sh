@@ -8,17 +8,17 @@
 
 echo ">>>> Starting database engine..."
 service postgresql start
-sudo -u postgres psql -c "CREATE USER root WITH PASSWORD 'root'" 
-sudo -u postgres psql -c "ALTER USER root WITH superuser"
+sudo -u postgres psql -c "CREATE USER blockscout WITH PASSWORD 'blockscout'" 
+sudo -u postgres psql -c "ALTER USER blockscout WITH superuser"
 
 echo ">>> Creating database..."
 mix ecto.create
 echo ">>> Migrating database..."
 mix ecto.migrate
 
-#echo ">>> Installing node dependencies..."
-#cd apps/block_scout_web/assets && npm install ; cd -
-#cd apps/explorer && npm install; cd -
+echo ">>> Installing node dependencies..."
+cd apps/block_scout_web/assets && npm install ; npm run deploy ; cd -
+cd apps/explorer && npm install; npm run deploy ; cd -
 
 echo ">>> Generating ssl certificate..."
 cd apps/block_scout_web

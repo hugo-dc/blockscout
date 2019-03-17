@@ -45,12 +45,12 @@ COPY ./  /blockscout
 
 WORKDIR /blockscout
 
-RUN pwd
-RUN ls
+#RUN pwd
+#RUN ls
 
-RUN . ~/.nvm/nvm.sh &&\
-    cd apps/block_scout_web/assets && npm install; cd - ; \
-    cd apps/explorer && npm install; cd -
+#RUN . ~/.nvm/nvm.sh &&\
+#    cd apps/block_scout_web/assets && npm install ; cd - ; \
+#    cd apps/explorer && npm install ; cd -
 
 RUN mix local.hex --force
 RUN mix do deps.get, local.rebar --force, deps.compile, compile
