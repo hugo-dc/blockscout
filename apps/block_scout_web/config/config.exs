@@ -12,10 +12,10 @@ config :block_scout_web,
   version: System.get_env("BLOCKSCOUT_VERSION")
 
 config :block_scout_web, BlockScoutWeb.Chain,
-  network: System.get_env("NETWORK"),
-  subnetwork: System.get_env("SUBNETWORK"),
+  network: "Ewasm",
+  subnetwork: "Ethereum WebAssembly",
   network_icon: System.get_env("NETWORK_ICON"),
-  logo: System.get_env("LOGO"),
+  logo: System.get_env("LOGO") || "/images/ewasm_logo.png",
   has_emission_funds: false
 
 config :block_scout_web,
@@ -66,6 +66,11 @@ config :block_scout_web,
     %{
       title: "Ethereum Classic",
       url: "https://blockscout.com/etc/mainnet"
+    },
+    %{
+      title: "Ethereum WebAssembly (ewasm)",
+      url: "https://ewasm.ethereum.org/blockscout",
+      test_net?: true
     }
   ]
 
